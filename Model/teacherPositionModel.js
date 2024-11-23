@@ -21,7 +21,7 @@ const teacherPositionSchema = new mongoose.Schema({
              type: Boolean,
              default: false
      },
-});
+},{collection:'teacherPosition'});
 
-const TeacherPosition = mongoose.model("TeacherPosition", teacherPositionSchema);
+const TeacherPosition = mongoose.model("teacherPosition", teacherPositionSchema);
 export default TeacherPosition;

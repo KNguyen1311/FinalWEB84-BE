@@ -7,7 +7,7 @@ import authenticateToken from "../Middleware/jwt.js";
 const teacherRouter = express.Router();
 
 teacherRouter.post('/create',teacherController.createTeacher)
-teacherRouter.get('/list',authenticateToken,teacherController.listTeachers)
+teacherRouter.get('/list',teacherController.listTeachers)
 
 
 

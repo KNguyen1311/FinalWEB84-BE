@@ -28,7 +28,7 @@ const degreeSchema = new mongoose.Schema({
       const teacherSchema = new mongoose.Schema({
         userId: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: "User", // Tham chiếu đến User model (nếu có)
+          ref: "users", // Tham chiếu đến User model (nếu có)
           required: true
         },
         isActive: {
@@ -51,14 +51,18 @@ const degreeSchema = new mongoose.Schema({
         endDate: {
           type: Date
         },
-        teacherPositions: [{
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "TeacherPosition" // Tham chiếu đến TeacherPosition model (nếu có)
-        }],
+        
+          teacherPositionsId:{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "teacherPosition" // Tham chiếu đến TeacherPosition model (nếu có)
+          },
+     
         degrees: [degreeSchema], // Mảng các bằng cấp của giáo viên
+      },{
+        collection:'teacher'
       });
       
       // Tạo model Teacher từ schema
-      const Teacher = mongoose.model("Teacher", teacherSchema);
+      const Teacher = mongoose.model("teacher", teacherSchema);
       
       export default Teacher;

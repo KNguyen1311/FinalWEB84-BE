@@ -20,7 +20,7 @@ app.use(cors({
 
 
 try{
-    await mongoose.connect('mongodb+srv://nguyennk2201:nguyennk2201@cluster0.nptev.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(() => {
+    await mongoose.connect('mongodb+srv://nguyennk2201:nguyennk2201@cluster0.nptev.mongodb.net/web84?retryWrites=true&w=majority&appName=Cluster0').then(() => {
         console.log('Connected database!'); 
     })
     } catch (error){

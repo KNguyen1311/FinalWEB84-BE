@@ -61,11 +61,19 @@ const teacherController = {
       const limit = parseInt(req.query.limit) || 10;
       const skip = (page - 1) * limit;
 
-      const teachers = await Teacher.find()
-        .skip(skip)
-        .limit(limit);
+      const teachers = await Teacher.find().populate({
+        path:'userId',
+        model:'users',
+      }).populate({
+        path:'teacherPositionsId',
+        model:'teacherPosition',
+      }).skip(page).limit(limit);
+      console.log(teachers)
+      
+        
 
-      res.status(200).json({ teachers });
+      res.status(200).send(teachers
+      );
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Error fetching teachers' });
